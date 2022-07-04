@@ -1,0 +1,34 @@
+@media only screen and (max-width: 768px){
+    .contenido-carro{
+        margin: 5% 0;
+    }
+    .navbar{
+        width: 100vw;
+    }
+    .tabla{
+        margin: 25vh 0;
+        padding: 0;
+        align-items: center;
+    }
+    .contenido{
+        margin: 5% 0;
+        grid-template-columns: 1fr;
+    }
+    .boton-nov{
+        grid-row: 3/4;
+        text-align: center;
+        grid-column: 1/3;
+        margin-bottom: 200px;
+    }
+    .boton-cat{
+        grid-row: 4/5;
+        height: fit-content;
+        grid-column: 1/3;
+    }
+}
+
+@media only screen and (max-width: 1200px) and (min-width: 769px){
+    .contenido{
+        grid-template-columns: 1fr 1fr;
+    }
+}

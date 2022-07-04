@@ -1,0 +1,426 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@300;400&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+}
+
+@font-face {
+  font-family: "GreatLakes";
+  src: url(../fuentes/GreatLakesNF.ttf);
+}
+.video-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  height: auto;
+  background-color: rgb(29, 29, 29);
+}
+
+video {
+  min-width: 100%;
+  min-height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -50;
+  /* SASS tiene un problemita al aplicar la propiedad "filter", está desde el 2013 este problema y la solución menos rebuscada que encontré es esta. */
+  filter: grayscale(100% );
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr auto auto 80px;
+  width: 40%;
+  margin: 0 auto;
+  margin-top: 10%;
+  position: absolute;
+  z-index: 100;
+  margin-left: 30%;
+  justify-items: center;
+}
+
+.logo-bad {
+  grid-column: 1/3;
+  font-family: "GreatLakes";
+  font-size: 10em;
+  text-align: center;
+  color: #eee;
+}
+
+.logo-des {
+  grid-column: 1/3;
+  font-family: "GreatLakes";
+  font-size: 6em;
+  text-align: center;
+  position: relative;
+  top: -30%;
+  color: #eee;
+}
+
+.grid-container .text {
+  animation: glitch 1s linear infinite;
+}
+
+@keyframes glitch {
+  2%, 64% {
+    transform: translate(2px, 0) skew(0deg);
+  }
+  4%, 60% {
+    transform: translate(-2px, 0) skew(0deg);
+  }
+  62% {
+    transform: translate(0, 0) skew(5deg);
+  }
+}
+.grid-container .text:before,
+.grid-container .text:after {
+  content: attr(title);
+  position: absolute;
+  left: 0;
+}
+
+.grid-container .text:before {
+  animation: glitchTop 1s linear infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+}
+
+@keyframes glitchTop {
+  2%, 64% {
+    transform: translate(5px, -20px);
+  }
+  4%, 60% {
+    transform: translate(-2px, 2px);
+  }
+  62% {
+    transform: translate(13px, -1px) skew(-13deg);
+  }
+}
+.grid-container .text:after {
+  animation: glitchBotom 1.5s linear infinite;
+  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+  -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+}
+
+@keyframes glitchBotom {
+  2%, 64% {
+    transform: translate(-2px, 0);
+  }
+  4%, 60% {
+    transform: translate(-2px, 0);
+  }
+  62% {
+    transform: translate(-22px, 5px) skew(21deg);
+  }
+}
+.boton-nov,
+.boton-cat {
+  text-decoration: rgb(218, 183, 27);
+}
+
+.grid-container a {
+  color: black;
+  margin: 0 20px;
+  padding: 5px 20px;
+  border: 1px solid rgb(218, 183, 27);
+  font-size: 1.1em;
+  font-family: "Anek Malayalam", sans-serif;
+  font-weight: 700;
+  overflow: hidden;
+  position: relative;
+  transition: color 0.5s 0.25s;
+  border-radius: 20px;
+  text-align: center;
+  width: fit-content;
+}
+
+.botones__boton::before,
+.botones__boton::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  z-index: -1;
+  transform: scaleX(0);
+  transition: transform 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+.botones__boton::before {
+  left: 0;
+  transform-origin: left;
+}
+
+.botones__boton::after {
+  right: 0;
+  transform-origin: right;
+}
+
+.botones__boton:hover::before,
+.botones__boton:hover::after {
+  transform: scaleX(1);
+}
+
+.botones__boton:hover {
+  color: rgb(218, 183, 27);
+  transition-delay: 0.1s;
+  text-decoration: none;
+}
+
+.footer-basic footer {
+  padding: 3px 0;
+  background-color: rgb(29, 29, 29);
+  color: rgb(218, 183, 27);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  width: 100vw;
+}
+
+.footer-basic ul {
+  padding: 0;
+  list-style: none;
+  text-align: right;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-basic li {
+  padding: 0 10px;
+}
+
+.footer-basic ul a {
+  color: rgb(218, 183, 27);
+  text-decoration: none;
+  opacity: 1;
+}
+
+.footer-basic ul a:hover {
+  text-decoration: underline;
+}
+
+.footer-basic .social > a {
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  margin: 0 8px;
+  color: inherit;
+  opacity: 0.75;
+}
+
+.footer-basic .social > a:hover {
+  opacity: 1;
+}
+
+.footer-basic .copyright {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 13px;
+  color: #aaa;
+  margin-bottom: 0;
+}
+
+.smol {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.contenido {
+  display: grid;
+  margin: 30px 0;
+  width: auto;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 5vw;
+  justify-items: center;
+}
+
+.contenido div {
+  width: 20rem;
+  text-align: center;
+  background-color: rgb(29, 29, 29);
+  border-radius: 10px;
+  outline-offset: -8px;
+  box-shadow: 3px 3px 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.contenido__remeras {
+  display: flex;
+  width: 100%;
+  height: 350px;
+  inset: 0;
+  object-fit: cover;
+  opacity: 0.8;
+  transition: transform 1s;
+  filter: grayscale(60% );
+}
+
+.contenido div:hover .contenido__remeras {
+  transform: scale(1.15);
+  filter: none;
+}
+
+.contenido__subtitulo,
+.contenido__titulo {
+  position: relative;
+  background-color: rgb(29, 29, 29);
+  font-family: "Anek Malayalam", sans-serif;
+  color: #eee;
+}
+
+.contenido__titulo {
+  text-align: center;
+  font-weight: 600;
+  font-size: 24px;
+  font-family: "Anek Malayalam", sans-serif;
+}
+
+.contenido__subtitulo {
+  font-family: "Anek Malayalam", sans-serif;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.contenido input {
+  background-color: rgb(218, 183, 27);
+  width: 120px;
+  height: 20px;
+  margin: 20px 0;
+  border-radius: 10px;
+  font-family: "Anek Malayalam", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  transition: width 50ms, height 50ms;
+}
+
+.contenido input:hover {
+  width: 140px;
+}
+
+.nav__logo {
+  height: 40px;
+  margin: 0 5%;
+}
+
+.nav-link, .dropdown-item {
+  font-family: "Anek Malayalam", sans-serif;
+}
+
+.navbar {
+  background-color: rgb(29, 29, 29);
+}
+
+.contenido-carro {
+  display: grid;
+  grid-template-columns: 80% 1fr;
+  grid-template-rows: repeat(1, 150px);
+  border: #000000 1px solid;
+  margin: 5% 25%;
+  background-color: rgba(51, 51, 51, 0.418);
+}
+
+.contenido-carro img {
+  height: 150px;
+  width: 100%;
+  /* display: none; */
+}
+
+.contenido-carro div {
+  border: 2px solid black;
+  justify-items: center;
+  font-family: "Anek Malayalam", sans-serif;
+  text-align: right;
+}
+
+.contenido-carro p {
+  margin: 35px;
+  font-weight: 600;
+  text-justify: center;
+}
+
+.accordion-flush {
+  margin: 10rem;
+  opacity: 0.9;
+  color: #eee;
+}
+
+.accordion-button {
+  font-family: "Anek Malayalam", sans-serif;
+}
+
+.tabla {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto 1fr;
+  width: 100%;
+  margin: 10% 0;
+  gap: 40px 0;
+  justify-items: center;
+}
+
+.tabla__medidas {
+  grid-column: 1/5;
+  width: 100%;
+}
+
+.tabla__botones {
+  width: 90px;
+  height: 30px;
+  font-family: "Anek Malayalam", sans-serif;
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 768px) {
+  .contenido-carro {
+    margin: 5% 0;
+  }
+  .navbar {
+    width: 100vw;
+  }
+  .tabla {
+    margin: 25vh 0;
+    padding: 0;
+    align-items: center;
+  }
+  .contenido {
+    margin: 5% 0;
+    grid-template-columns: 1fr;
+  }
+  .boton-nov {
+    grid-row: 3/4;
+    text-align: center;
+    grid-column: 1/3;
+    margin-bottom: 200px;
+  }
+  .boton-cat {
+    grid-row: 4/5;
+    height: fit-content;
+    grid-column: 1/3;
+  }
+}
+@media only screen and (max-width: 1200px) and (min-width: 769px) {
+  .contenido {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+body {
+  background-image: url(../multi/img/background.jpg);
+}
+
+/*# sourceMappingURL=style.css.map */
