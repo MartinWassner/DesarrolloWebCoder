@@ -1,0 +1,11 @@
+@mixin locuras($altura) {
+    height: $altura;
+}
+
+.comprar{
+    @include locuras(100%)
+}
+
+.contenido input{
+    @include locuras(20px)
+}
