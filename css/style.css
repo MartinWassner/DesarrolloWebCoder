@@ -48,6 +48,7 @@ video {
   font-size: 10em;
   text-align: center;
   color: #eee;
+ filter: drop-shadow(5px 5px 5px black);
 }
 
 .logo-des {
@@ -58,6 +59,7 @@ video {
   position: relative;
   top: -30%;
   color: #eee;
+  filter: drop-shadow(5px 5px 5px black);
 }
 
 .grid-container .text {
